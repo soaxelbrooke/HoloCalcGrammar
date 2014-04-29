@@ -7,7 +7,9 @@ HoloCalcGrammar is an ANTLR4 grammar that describes the computation of complex e
 
 Turns them into walkable trees like
 
-```imghere```
+```
+imghere
+```
 
 And calculates their solution.
 
