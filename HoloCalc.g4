@@ -1,10 +1,11 @@
 grammar HoloCalc;
 
-
+// Calcalates a string terminated by EOF
 calc returns [double result]
     :   value = addsub EOF {$result = $value.result;}
     ;
 
+// Addition and subtraction
 addsub returns [double result]
     :   value = muldiv {$result = $value.result;}
         (   PLUS  value2 = muldiv PERCENT {$result *= 1 + $value2.result/100;}
@@ -14,6 +15,7 @@ addsub returns [double result]
         )*
     ;
 
+// Multiplication and division
 muldiv returns [double result]
     :   value = power {$result = $value.result;}
         (   MULTIPLY value2 = power PERCENT {$result *= $value2.result/100;}
@@ -23,12 +25,14 @@ muldiv returns [double result]
         )*
     ;
 
+// Powers/exponents
 power returns [double result]
     :   value = negation POWER value2 = power PERCENT{$result = java.lang.Math.pow($value.result, $value2.result/100);}
     |   value = negation POWER value2 = power {$result = java.lang.Math.pow($value.result, $value2.result);}
     |   value = negation {$result = $value.result;}
     ;
 
+// Negation, i.e. -x
 negation returns [double result]
     :   value = atom PERCENT       {$result = $value.result/100;}
     |   value = atom               {$result = $value.result;}
@@ -36,6 +40,7 @@ negation returns [double result]
     |   MINUS value = atom         {$result = -$value.result;}
     ;
 
+// Functions, numbers, and parentheses groups
 atom returns [double result]
     :   LOG10   '(' exp = addsub ')' {$result = java.lang.Math.log10($exp.result);}
     |	LOG8    '(' exp = addsub ')' {$result = java.lang.Math.log10($exp.result)/java.lang.Math.log10(8.0);}
@@ -64,37 +69,37 @@ atom returns [double result]
 
 
 // Operators
-PLUS : '+';
-MINUS : '-';
-MULTIPLY : '*';
-DIVIDE: '/';
-POWER: '^';
-PERCENT: '%';
+PLUS    :   '+';
+MINUS   :   '-';
+MULTIPLY:   '*';
+DIVIDE  :   '/';
+POWER   :   '^';
+PERCENT :   '%';
 
 // Number-likes
-INT : [0-9]+;
-DOUBLE : [0-9]+'.'[0-9]*;
-OPENPAREN : '(';
-CLOSEPAREN : ')';
-PI	:	'pi';
-EXP	:	'e';
+INT     :   [0-9]+;
+DOUBLE  :   [0-9]+'.'[0-9]*;
+OPENPAREN:  '(';
+CLOSEPAREN: ')';
+PI	    :	'pi';
+EXP	    :	'e';
 
 // Functions
 SQRE	:	'sqre';
 CUBE	:	'cube';
 SQRT	:	'sqrt';
 CBRT	:	'cbrt';
-LN 	:	 'ln';
+LN 	    :	 'ln';
 LOG10	:	'log10';
 LOG8	:	'log8';
 LOG2	:	'log2';
-SIN	:	'sin';
-COS	:	'cos';
-TAN	:	'tan';
+SIN	    :	'sin';
+COS	    :	'cos';
+TAN	    :	'tan';
 ASIN	:	'asin';
 ACOS	:	'acos';
 ATAN	:	'atan';
-// For trig in decimal
+// For trig in degrees
 SIND	:	'sind';
 COSD	:	'cosd';
 TAND	:	'tand';
@@ -103,4 +108,4 @@ ACOSD	:	'acosd';
 ATAND	:	'atand';
 
 // Etc
-NEWLINE : '\n';
+NEWLINE :   '\n';

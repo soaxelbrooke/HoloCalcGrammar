@@ -13,7 +13,7 @@ And calculates their solution. (The answer is -12781.6676, in case you're wonder
 
 
 ## How Do I Use It?
-Most of the work in using it is compiling the grammar (.g4 file) into usable Java.  This process is described via the ANTLR page (https://theantlrguy.atlassian.net/wiki/display/ANTLR4/Getting+Started+with+ANTLR+v4).  This repo also has a compiled version of the current HoloCalcParser in Java, which you can use without going through the above process.
+Most of the work in using it is compiling the grammar (.g4 file) into a more useful language.  This process is described via the ANTLR [getting-started page](https://theantlrguy.atlassian.net/wiki/display/ANTLR4/Getting+Started+with+ANTLR+v4).  This repo also has a compiled version of the current HoloCalcParser in Java, which you can use without going through the above process.
 
 ## License
 Copyright 2014 Stuart Owen.
