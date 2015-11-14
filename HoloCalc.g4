@@ -36,8 +36,8 @@ power returns [double result]
 negation returns [double result]
     :   value = atom PERCENT       {$result = $value.result/100;}
     |   value = atom               {$result = $value.result;}
-    |   MINUS value = atom PERCENT {$result = -$value.result/100;}
-    |   MINUS value = atom         {$result = -$value.result;}
+    |   INVERT value = atom PERCENT {$result = -$value.result/100;}
+    |   INVERT value = atom         {$result = -$value.result;}
     ;
 
 // Functions, numbers, and parentheses groups
@@ -75,6 +75,7 @@ MULTIPLY:   '*';
 DIVIDE  :   '/';
 POWER   :   '^';
 PERCENT :   '%';
+INVERT	:   'inv';
 
 // Number-likes
 INT     :   [0-9]+;
@@ -109,3 +110,5 @@ ATAND	:	'atand';
 
 // Etc
 NEWLINE :   '\n';
+EQUALS	:   '=';
+
