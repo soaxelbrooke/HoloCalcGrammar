@@ -98,6 +98,7 @@ public class HoloCalcParser extends Parser {
 		public AddsubContext addsub() {
 			return getRuleContext(AddsubContext.class,0);
 		}
+		public TerminalNode EQUALS() { return getToken(HoloCalcParser.EQUALS, 0); }
 		public CalcContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -115,11 +116,21 @@ public class HoloCalcParser extends Parser {
 	public final CalcContext calc() throws RecognitionException {
 		CalcContext _localctx = new CalcContext(_ctx, getState());
 		enterRule(_localctx, 0, RULE_calc);
+		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(12);
 			((CalcContext)_localctx).value = addsub();
+			setState(14);
+			_la = _input.LA(1);
+			if (_la==EQUALS) {
+				{
+				setState(13);
+				match(EQUALS);
+				}
+			}
+
 			((CalcContext)_localctx).result =  ((CalcContext)_localctx).value.result;
 			}
 		}
@@ -177,59 +188,59 @@ public class HoloCalcParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(15);
+			setState(18);
 			((AddsubContext)_localctx).value = muldiv();
 			((AddsubContext)_localctx).result =  ((AddsubContext)_localctx).value.result;
-			setState(37);
+			setState(40);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==PLUS || _la==MINUS) {
 				{
-				setState(35);
-				switch ( getInterpreter().adaptivePredict(_input,0,_ctx) ) {
+				setState(38);
+				switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 				case 1:
 					{
-					setState(17);
+					setState(20);
 					match(PLUS);
-					setState(18);
+					setState(21);
 					((AddsubContext)_localctx).value2 = muldiv();
-					setState(19);
+					setState(22);
 					match(PERCENT);
 					_localctx.result *= 1 + ((AddsubContext)_localctx).value2.result/100;
 					}
 					break;
 				case 2:
 					{
-					setState(22);
+					setState(25);
 					match(PLUS);
-					setState(23);
+					setState(26);
 					((AddsubContext)_localctx).value2 = muldiv();
 					_localctx.result += ((AddsubContext)_localctx).value2.result;
 					}
 					break;
 				case 3:
 					{
-					setState(26);
+					setState(29);
 					match(MINUS);
-					setState(27);
+					setState(30);
 					((AddsubContext)_localctx).value2 = muldiv();
-					setState(28);
+					setState(31);
 					match(PERCENT);
 					_localctx.result *= 1 - ((AddsubContext)_localctx).value2.result/100;
 					}
 					break;
 				case 4:
 					{
-					setState(31);
+					setState(34);
 					match(MINUS);
-					setState(32);
+					setState(35);
 					((AddsubContext)_localctx).value2 = muldiv();
 					_localctx.result -= ((AddsubContext)_localctx).value2.result;
 					}
 					break;
 				}
 				}
-				setState(39);
+				setState(42);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -289,59 +300,59 @@ public class HoloCalcParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(40);
+			setState(43);
 			((MuldivContext)_localctx).value = power();
 			((MuldivContext)_localctx).result =  ((MuldivContext)_localctx).value.result;
-			setState(62);
+			setState(65);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==MULTIPLY || _la==DIVIDE) {
 				{
-				setState(60);
-				switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
+				setState(63);
+				switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
 				case 1:
 					{
-					setState(42);
+					setState(45);
 					match(MULTIPLY);
-					setState(43);
+					setState(46);
 					((MuldivContext)_localctx).value2 = power();
-					setState(44);
+					setState(47);
 					match(PERCENT);
 					_localctx.result *= ((MuldivContext)_localctx).value2.result/100;
 					}
 					break;
 				case 2:
 					{
-					setState(47);
+					setState(50);
 					match(MULTIPLY);
-					setState(48);
+					setState(51);
 					((MuldivContext)_localctx).value2 = power();
 					_localctx.result *= ((MuldivContext)_localctx).value2.result;
 					}
 					break;
 				case 3:
 					{
-					setState(51);
+					setState(54);
 					match(DIVIDE);
-					setState(52);
+					setState(55);
 					((MuldivContext)_localctx).value2 = power();
-					setState(53);
+					setState(56);
 					match(PERCENT);
 					_localctx.result /= ((MuldivContext)_localctx).value2.result/100;
 					}
 					break;
 				case 4:
 					{
-					setState(56);
+					setState(59);
 					match(DIVIDE);
-					setState(57);
+					setState(60);
 					((MuldivContext)_localctx).value2 = power();
 					_localctx.result /= ((MuldivContext)_localctx).value2.result;
 					}
 					break;
 				}
 				}
-				setState(64);
+				setState(67);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -388,18 +399,18 @@ public class HoloCalcParser extends Parser {
 		PowerContext _localctx = new PowerContext(_ctx, getState());
 		enterRule(_localctx, 6, RULE_power);
 		try {
-			setState(79);
-			switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
+			setState(82);
+			switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(65);
-				((PowerContext)_localctx).value = negation();
-				setState(66);
-				match(POWER);
-				setState(67);
-				((PowerContext)_localctx).value2 = power();
 				setState(68);
+				((PowerContext)_localctx).value = negation();
+				setState(69);
+				match(POWER);
+				setState(70);
+				((PowerContext)_localctx).value2 = power();
+				setState(71);
 				match(PERCENT);
 				((PowerContext)_localctx).result =  java.lang.Math.pow(((PowerContext)_localctx).value.result, ((PowerContext)_localctx).value2.result/100);
 				}
@@ -407,11 +418,11 @@ public class HoloCalcParser extends Parser {
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(71);
+				setState(74);
 				((PowerContext)_localctx).value = negation();
-				setState(72);
+				setState(75);
 				match(POWER);
-				setState(73);
+				setState(76);
 				((PowerContext)_localctx).value2 = power();
 				((PowerContext)_localctx).result =  java.lang.Math.pow(((PowerContext)_localctx).value.result, ((PowerContext)_localctx).value2.result);
 				}
@@ -419,7 +430,7 @@ public class HoloCalcParser extends Parser {
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(76);
+				setState(79);
 				((PowerContext)_localctx).value = negation();
 				((PowerContext)_localctx).result =  ((PowerContext)_localctx).value.result;
 				}
@@ -463,14 +474,14 @@ public class HoloCalcParser extends Parser {
 		NegationContext _localctx = new NegationContext(_ctx, getState());
 		enterRule(_localctx, 8, RULE_negation);
 		try {
-			setState(97);
-			switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
+			setState(100);
+			switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(81);
+				setState(84);
 				((NegationContext)_localctx).value = atom();
-				setState(82);
+				setState(85);
 				match(PERCENT);
 				((NegationContext)_localctx).result =  ((NegationContext)_localctx).value.result/100;
 				}
@@ -478,7 +489,7 @@ public class HoloCalcParser extends Parser {
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(85);
+				setState(88);
 				((NegationContext)_localctx).value = atom();
 				((NegationContext)_localctx).result =  ((NegationContext)_localctx).value.result;
 				}
@@ -486,11 +497,11 @@ public class HoloCalcParser extends Parser {
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(88);
+				setState(91);
 				match(INVERT);
-				setState(89);
+				setState(92);
 				((NegationContext)_localctx).value = atom();
-				setState(90);
+				setState(93);
 				match(PERCENT);
 				((NegationContext)_localctx).result =  -((NegationContext)_localctx).value.result/100;
 				}
@@ -498,9 +509,9 @@ public class HoloCalcParser extends Parser {
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(93);
+				setState(96);
 				match(INVERT);
-				setState(94);
+				setState(97);
 				((NegationContext)_localctx).value = atom();
 				((NegationContext)_localctx).result =  -((NegationContext)_localctx).value.result;
 				}
@@ -569,18 +580,18 @@ public class HoloCalcParser extends Parser {
 		AtomContext _localctx = new AtomContext(_ctx, getState());
 		enterRule(_localctx, 10, RULE_atom);
 		try {
-			setState(220);
+			setState(223);
 			switch (_input.LA(1)) {
 			case LOG10:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(99);
-				match(LOG10);
-				setState(100);
-				match(OPENPAREN);
-				setState(101);
-				((AtomContext)_localctx).exp = addsub();
 				setState(102);
+				match(LOG10);
+				setState(103);
+				match(OPENPAREN);
+				setState(104);
+				((AtomContext)_localctx).exp = addsub();
+				setState(105);
 				match(CLOSEPAREN);
 				((AtomContext)_localctx).result =  java.lang.Math.log10(((AtomContext)_localctx).exp.result);
 				}
@@ -588,13 +599,13 @@ public class HoloCalcParser extends Parser {
 			case LOG8:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(105);
-				match(LOG8);
-				setState(106);
-				match(OPENPAREN);
-				setState(107);
-				((AtomContext)_localctx).exp = addsub();
 				setState(108);
+				match(LOG8);
+				setState(109);
+				match(OPENPAREN);
+				setState(110);
+				((AtomContext)_localctx).exp = addsub();
+				setState(111);
 				match(CLOSEPAREN);
 				((AtomContext)_localctx).result =  java.lang.Math.log10(((AtomContext)_localctx).exp.result)/java.lang.Math.log10(8.0);
 				}
@@ -602,13 +613,13 @@ public class HoloCalcParser extends Parser {
 			case LOG2:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(111);
-				match(LOG2);
-				setState(112);
-				match(OPENPAREN);
-				setState(113);
-				((AtomContext)_localctx).exp = addsub();
 				setState(114);
+				match(LOG2);
+				setState(115);
+				match(OPENPAREN);
+				setState(116);
+				((AtomContext)_localctx).exp = addsub();
+				setState(117);
 				match(CLOSEPAREN);
 				((AtomContext)_localctx).result =  java.lang.Math.log10(((AtomContext)_localctx).exp.result)/java.lang.Math.log10(2.0);
 				}
@@ -616,13 +627,13 @@ public class HoloCalcParser extends Parser {
 			case LN:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(117);
-				match(LN);
-				setState(118);
-				match(OPENPAREN);
-				setState(119);
-				((AtomContext)_localctx).exp = addsub();
 				setState(120);
+				match(LN);
+				setState(121);
+				match(OPENPAREN);
+				setState(122);
+				((AtomContext)_localctx).exp = addsub();
+				setState(123);
 				match(CLOSEPAREN);
 				((AtomContext)_localctx).result =  java.lang.Math.log(((AtomContext)_localctx).exp.result);
 				}
@@ -630,13 +641,13 @@ public class HoloCalcParser extends Parser {
 			case ASIN:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(123);
-				match(ASIN);
-				setState(124);
-				match(OPENPAREN);
-				setState(125);
-				((AtomContext)_localctx).exp = addsub();
 				setState(126);
+				match(ASIN);
+				setState(127);
+				match(OPENPAREN);
+				setState(128);
+				((AtomContext)_localctx).exp = addsub();
+				setState(129);
 				match(CLOSEPAREN);
 				((AtomContext)_localctx).result =  Math.asin(Math.PI*((((AtomContext)_localctx).exp.result/Math.PI) % 2));
 				}
@@ -644,13 +655,13 @@ public class HoloCalcParser extends Parser {
 			case ACOS:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(129);
-				match(ACOS);
-				setState(130);
-				match(OPENPAREN);
-				setState(131);
-				((AtomContext)_localctx).exp = addsub();
 				setState(132);
+				match(ACOS);
+				setState(133);
+				match(OPENPAREN);
+				setState(134);
+				((AtomContext)_localctx).exp = addsub();
+				setState(135);
 				match(CLOSEPAREN);
 				((AtomContext)_localctx).result =  Math.acos(Math.PI*((((AtomContext)_localctx).exp.result/Math.PI) % 2));
 				}
@@ -658,13 +669,13 @@ public class HoloCalcParser extends Parser {
 			case ATAN:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(135);
-				match(ATAN);
-				setState(136);
-				match(OPENPAREN);
-				setState(137);
-				((AtomContext)_localctx).exp = addsub();
 				setState(138);
+				match(ATAN);
+				setState(139);
+				match(OPENPAREN);
+				setState(140);
+				((AtomContext)_localctx).exp = addsub();
+				setState(141);
 				match(CLOSEPAREN);
 				((AtomContext)_localctx).result =  Math.atan(Math.PI*((((AtomContext)_localctx).exp.result/Math.PI) % 2));
 				}
@@ -672,13 +683,13 @@ public class HoloCalcParser extends Parser {
 			case SIN:
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(141);
-				match(SIN);
-				setState(142);
-				match(OPENPAREN);
-				setState(143);
-				((AtomContext)_localctx).exp = addsub();
 				setState(144);
+				match(SIN);
+				setState(145);
+				match(OPENPAREN);
+				setState(146);
+				((AtomContext)_localctx).exp = addsub();
+				setState(147);
 				match(CLOSEPAREN);
 				((AtomContext)_localctx).result =  Math.sin(Math.PI*((((AtomContext)_localctx).exp.result/Math.PI) % 2));
 				}
@@ -686,13 +697,13 @@ public class HoloCalcParser extends Parser {
 			case COS:
 				enterOuterAlt(_localctx, 9);
 				{
-				setState(147);
-				match(COS);
-				setState(148);
-				match(OPENPAREN);
-				setState(149);
-				((AtomContext)_localctx).exp = addsub();
 				setState(150);
+				match(COS);
+				setState(151);
+				match(OPENPAREN);
+				setState(152);
+				((AtomContext)_localctx).exp = addsub();
+				setState(153);
 				match(CLOSEPAREN);
 				((AtomContext)_localctx).result =  Math.cos(Math.PI*((((AtomContext)_localctx).exp.result/Math.PI) % 2));
 				}
@@ -700,13 +711,13 @@ public class HoloCalcParser extends Parser {
 			case TAN:
 				enterOuterAlt(_localctx, 10);
 				{
-				setState(153);
-				match(TAN);
-				setState(154);
-				match(OPENPAREN);
-				setState(155);
-				((AtomContext)_localctx).exp = addsub();
 				setState(156);
+				match(TAN);
+				setState(157);
+				match(OPENPAREN);
+				setState(158);
+				((AtomContext)_localctx).exp = addsub();
+				setState(159);
 				match(CLOSEPAREN);
 				((AtomContext)_localctx).result =  Math.tan(Math.PI*((((AtomContext)_localctx).exp.result/Math.PI) % 2));
 				}
@@ -714,13 +725,13 @@ public class HoloCalcParser extends Parser {
 			case ASIND:
 				enterOuterAlt(_localctx, 11);
 				{
-				setState(159);
-				match(ASIND);
-				setState(160);
-				match(OPENPAREN);
-				setState(161);
-				((AtomContext)_localctx).exp = addsub();
 				setState(162);
+				match(ASIND);
+				setState(163);
+				match(OPENPAREN);
+				setState(164);
+				((AtomContext)_localctx).exp = addsub();
+				setState(165);
 				match(CLOSEPAREN);
 				((AtomContext)_localctx).result =  180f/Math.PI*Math.asin(((AtomContext)_localctx).exp.result);
 				}
@@ -728,13 +739,13 @@ public class HoloCalcParser extends Parser {
 			case ACOSD:
 				enterOuterAlt(_localctx, 12);
 				{
-				setState(165);
-				match(ACOSD);
-				setState(166);
-				match(OPENPAREN);
-				setState(167);
-				((AtomContext)_localctx).exp = addsub();
 				setState(168);
+				match(ACOSD);
+				setState(169);
+				match(OPENPAREN);
+				setState(170);
+				((AtomContext)_localctx).exp = addsub();
+				setState(171);
 				match(CLOSEPAREN);
 				((AtomContext)_localctx).result =  180f/Math.PI*Math.acos(((AtomContext)_localctx).exp.result);
 				}
@@ -742,13 +753,13 @@ public class HoloCalcParser extends Parser {
 			case ATAND:
 				enterOuterAlt(_localctx, 13);
 				{
-				setState(171);
-				match(ATAND);
-				setState(172);
-				match(OPENPAREN);
-				setState(173);
-				((AtomContext)_localctx).exp = addsub();
 				setState(174);
+				match(ATAND);
+				setState(175);
+				match(OPENPAREN);
+				setState(176);
+				((AtomContext)_localctx).exp = addsub();
+				setState(177);
 				match(CLOSEPAREN);
 				((AtomContext)_localctx).result =  180f/Math.PI*Math.atan(((AtomContext)_localctx).exp.result);
 				}
@@ -756,13 +767,13 @@ public class HoloCalcParser extends Parser {
 			case SIND:
 				enterOuterAlt(_localctx, 14);
 				{
-				setState(177);
-				match(SIND);
-				setState(178);
-				match(OPENPAREN);
-				setState(179);
-				((AtomContext)_localctx).exp = addsub();
 				setState(180);
+				match(SIND);
+				setState(181);
+				match(OPENPAREN);
+				setState(182);
+				((AtomContext)_localctx).exp = addsub();
+				setState(183);
 				match(CLOSEPAREN);
 				((AtomContext)_localctx).result =  Math.sin(Math.PI*((((AtomContext)_localctx).exp.result/180f) % 2));
 				}
@@ -770,13 +781,13 @@ public class HoloCalcParser extends Parser {
 			case COSD:
 				enterOuterAlt(_localctx, 15);
 				{
-				setState(183);
-				match(COSD);
-				setState(184);
-				match(OPENPAREN);
-				setState(185);
-				((AtomContext)_localctx).exp = addsub();
 				setState(186);
+				match(COSD);
+				setState(187);
+				match(OPENPAREN);
+				setState(188);
+				((AtomContext)_localctx).exp = addsub();
+				setState(189);
 				match(CLOSEPAREN);
 				((AtomContext)_localctx).result =  Math.cos(Math.PI*((((AtomContext)_localctx).exp.result/180f) % 2));
 				}
@@ -784,13 +795,13 @@ public class HoloCalcParser extends Parser {
 			case TAND:
 				enterOuterAlt(_localctx, 16);
 				{
-				setState(189);
-				match(TAND);
-				setState(190);
-				match(OPENPAREN);
-				setState(191);
-				((AtomContext)_localctx).exp = addsub();
 				setState(192);
+				match(TAND);
+				setState(193);
+				match(OPENPAREN);
+				setState(194);
+				((AtomContext)_localctx).exp = addsub();
+				setState(195);
 				match(CLOSEPAREN);
 				((AtomContext)_localctx).result =  Math.tan(Math.PI*((((AtomContext)_localctx).exp.result/180f) % 2));
 				}
@@ -798,13 +809,13 @@ public class HoloCalcParser extends Parser {
 			case SQRT:
 				enterOuterAlt(_localctx, 17);
 				{
-				setState(195);
-				match(SQRT);
-				setState(196);
-				match(OPENPAREN);
-				setState(197);
-				((AtomContext)_localctx).exp = addsub();
 				setState(198);
+				match(SQRT);
+				setState(199);
+				match(OPENPAREN);
+				setState(200);
+				((AtomContext)_localctx).exp = addsub();
+				setState(201);
 				match(CLOSEPAREN);
 				((AtomContext)_localctx).result =  (double) java.lang.Math.pow(((AtomContext)_localctx).exp.result, 0.5);
 				}
@@ -812,13 +823,13 @@ public class HoloCalcParser extends Parser {
 			case CBRT:
 				enterOuterAlt(_localctx, 18);
 				{
-				setState(201);
-				match(CBRT);
-				setState(202);
-				match(OPENPAREN);
-				setState(203);
-				((AtomContext)_localctx).exp = addsub();
 				setState(204);
+				match(CBRT);
+				setState(205);
+				match(OPENPAREN);
+				setState(206);
+				((AtomContext)_localctx).exp = addsub();
+				setState(207);
 				match(CLOSEPAREN);
 				((AtomContext)_localctx).result =  (double) java.lang.Math.pow(((AtomContext)_localctx).exp.result, 1.0/3.0);
 				}
@@ -826,7 +837,7 @@ public class HoloCalcParser extends Parser {
 			case DOUBLE:
 				enterOuterAlt(_localctx, 19);
 				{
-				setState(207);
+				setState(210);
 				((AtomContext)_localctx).DOUBLE = match(DOUBLE);
 				((AtomContext)_localctx).result =  (double) Double.parseDouble((((AtomContext)_localctx).DOUBLE!=null?((AtomContext)_localctx).DOUBLE.getText():null).replaceAll(",", ""));
 				}
@@ -834,7 +845,7 @@ public class HoloCalcParser extends Parser {
 			case INT:
 				enterOuterAlt(_localctx, 20);
 				{
-				setState(209);
+				setState(212);
 				((AtomContext)_localctx).INT = match(INT);
 				((AtomContext)_localctx).result =  (double) Double.parseDouble((((AtomContext)_localctx).INT!=null?((AtomContext)_localctx).INT.getText():null).replaceAll(",", ""));
 				}
@@ -842,7 +853,7 @@ public class HoloCalcParser extends Parser {
 			case PI:
 				enterOuterAlt(_localctx, 21);
 				{
-				setState(211);
+				setState(214);
 				match(PI);
 				((AtomContext)_localctx).result =  (double) java.lang.Math.PI;
 				}
@@ -850,7 +861,7 @@ public class HoloCalcParser extends Parser {
 			case EXP:
 				enterOuterAlt(_localctx, 22);
 				{
-				setState(213);
+				setState(216);
 				match(EXP);
 				((AtomContext)_localctx).result =  (double) java.lang.Math.E;
 				}
@@ -858,11 +869,11 @@ public class HoloCalcParser extends Parser {
 			case OPENPAREN:
 				enterOuterAlt(_localctx, 23);
 				{
-				setState(215);
+				setState(218);
 				match(OPENPAREN);
-				setState(216);
+				setState(219);
 				((AtomContext)_localctx).exp2 = addsub();
-				setState(217);
+				setState(220);
 				match(CLOSEPAREN);
 				((AtomContext)_localctx).result =  ((AtomContext)_localctx).exp2.result;
 				}
@@ -883,76 +894,77 @@ public class HoloCalcParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3%\u00e1\4\2\t\2\4"+
-		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\3\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3"+
-		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\7\3&\n\3"+
-		"\f\3\16\3)\13\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3"+
-		"\4\3\4\3\4\3\4\3\4\3\4\3\4\7\4?\n\4\f\4\16\4B\13\4\3\5\3\5\3\5\3\5\3\5"+
-		"\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\5\5R\n\5\3\6\3\6\3\6\3\6\3\6\3\6"+
-		"\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\5\6d\n\6\3\7\3\7\3\7\3\7\3\7"+
-		"\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3%\u00e4\4\2\t\2\4"+
+		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\3\2\3\2\5\2\21\n\2\3\2\3\2\3\3"+
+		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3"+
+		"\3\3\3\7\3)\n\3\f\3\16\3,\13\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4"+
+		"\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\7\4B\n\4\f\4\16\4E\13\4\3\5\3"+
+		"\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\5\5U\n\5\3\6\3\6\3"+
+		"\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\5\6g\n\6\3\7\3"+
 		"\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7"+
 		"\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3"+
 		"\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7"+
 		"\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3"+
 		"\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7"+
-		"\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7\u00df\n\7\3\7\2\2\b\2"+
-		"\4\6\b\n\f\2\2\u00fd\2\16\3\2\2\2\4\21\3\2\2\2\6*\3\2\2\2\bQ\3\2\2\2\n"+
-		"c\3\2\2\2\f\u00de\3\2\2\2\16\17\5\4\3\2\17\20\b\2\1\2\20\3\3\2\2\2\21"+
-		"\22\5\6\4\2\22\'\b\3\1\2\23\24\7\3\2\2\24\25\5\6\4\2\25\26\7\b\2\2\26"+
-		"\27\b\3\1\2\27&\3\2\2\2\30\31\7\3\2\2\31\32\5\6\4\2\32\33\b\3\1\2\33&"+
-		"\3\2\2\2\34\35\7\4\2\2\35\36\5\6\4\2\36\37\7\b\2\2\37 \b\3\1\2 &\3\2\2"+
-		"\2!\"\7\4\2\2\"#\5\6\4\2#$\b\3\1\2$&\3\2\2\2%\23\3\2\2\2%\30\3\2\2\2%"+
-		"\34\3\2\2\2%!\3\2\2\2&)\3\2\2\2\'%\3\2\2\2\'(\3\2\2\2(\5\3\2\2\2)\'\3"+
-		"\2\2\2*+\5\b\5\2+@\b\4\1\2,-\7\5\2\2-.\5\b\5\2./\7\b\2\2/\60\b\4\1\2\60"+
-		"?\3\2\2\2\61\62\7\5\2\2\62\63\5\b\5\2\63\64\b\4\1\2\64?\3\2\2\2\65\66"+
-		"\7\6\2\2\66\67\5\b\5\2\678\7\b\2\289\b\4\1\29?\3\2\2\2:;\7\6\2\2;<\5\b"+
-		"\5\2<=\b\4\1\2=?\3\2\2\2>,\3\2\2\2>\61\3\2\2\2>\65\3\2\2\2>:\3\2\2\2?"+
-		"B\3\2\2\2@>\3\2\2\2@A\3\2\2\2A\7\3\2\2\2B@\3\2\2\2CD\5\n\6\2DE\7\7\2\2"+
-		"EF\5\b\5\2FG\7\b\2\2GH\b\5\1\2HR\3\2\2\2IJ\5\n\6\2JK\7\7\2\2KL\5\b\5\2"+
-		"LM\b\5\1\2MR\3\2\2\2NO\5\n\6\2OP\b\5\1\2PR\3\2\2\2QC\3\2\2\2QI\3\2\2\2"+
-		"QN\3\2\2\2R\t\3\2\2\2ST\5\f\7\2TU\7\b\2\2UV\b\6\1\2Vd\3\2\2\2WX\5\f\7"+
-		"\2XY\b\6\1\2Yd\3\2\2\2Z[\7\t\2\2[\\\5\f\7\2\\]\7\b\2\2]^\b\6\1\2^d\3\2"+
-		"\2\2_`\7\t\2\2`a\5\f\7\2ab\b\6\1\2bd\3\2\2\2cS\3\2\2\2cW\3\2\2\2cZ\3\2"+
-		"\2\2c_\3\2\2\2d\13\3\2\2\2ef\7\25\2\2fg\7\f\2\2gh\5\4\3\2hi\7\r\2\2ij"+
-		"\b\7\1\2j\u00df\3\2\2\2kl\7\26\2\2lm\7\f\2\2mn\5\4\3\2no\7\r\2\2op\b\7"+
-		"\1\2p\u00df\3\2\2\2qr\7\27\2\2rs\7\f\2\2st\5\4\3\2tu\7\r\2\2uv\b\7\1\2"+
-		"v\u00df\3\2\2\2wx\7\24\2\2xy\7\f\2\2yz\5\4\3\2z{\7\r\2\2{|\b\7\1\2|\u00df"+
-		"\3\2\2\2}~\7\33\2\2~\177\7\f\2\2\177\u0080\5\4\3\2\u0080\u0081\7\r\2\2"+
-		"\u0081\u0082\b\7\1\2\u0082\u00df\3\2\2\2\u0083\u0084\7\34\2\2\u0084\u0085"+
-		"\7\f\2\2\u0085\u0086\5\4\3\2\u0086\u0087\7\r\2\2\u0087\u0088\b\7\1\2\u0088"+
-		"\u00df\3\2\2\2\u0089\u008a\7\35\2\2\u008a\u008b\7\f\2\2\u008b\u008c\5"+
-		"\4\3\2\u008c\u008d\7\r\2\2\u008d\u008e\b\7\1\2\u008e\u00df\3\2\2\2\u008f"+
-		"\u0090\7\30\2\2\u0090\u0091\7\f\2\2\u0091\u0092\5\4\3\2\u0092\u0093\7"+
-		"\r\2\2\u0093\u0094\b\7\1\2\u0094\u00df\3\2\2\2\u0095\u0096\7\31\2\2\u0096"+
-		"\u0097\7\f\2\2\u0097\u0098\5\4\3\2\u0098\u0099\7\r\2\2\u0099\u009a\b\7"+
-		"\1\2\u009a\u00df\3\2\2\2\u009b\u009c\7\32\2\2\u009c\u009d\7\f\2\2\u009d"+
-		"\u009e\5\4\3\2\u009e\u009f\7\r\2\2\u009f\u00a0\b\7\1\2\u00a0\u00df\3\2"+
-		"\2\2\u00a1\u00a2\7!\2\2\u00a2\u00a3\7\f\2\2\u00a3\u00a4\5\4\3\2\u00a4"+
-		"\u00a5\7\r\2\2\u00a5\u00a6\b\7\1\2\u00a6\u00df\3\2\2\2\u00a7\u00a8\7\""+
-		"\2\2\u00a8\u00a9\7\f\2\2\u00a9\u00aa\5\4\3\2\u00aa\u00ab\7\r\2\2\u00ab"+
-		"\u00ac\b\7\1\2\u00ac\u00df\3\2\2\2\u00ad\u00ae\7#\2\2\u00ae\u00af\7\f"+
-		"\2\2\u00af\u00b0\5\4\3\2\u00b0\u00b1\7\r\2\2\u00b1\u00b2\b\7\1\2\u00b2"+
-		"\u00df\3\2\2\2\u00b3\u00b4\7\36\2\2\u00b4\u00b5\7\f\2\2\u00b5\u00b6\5"+
-		"\4\3\2\u00b6\u00b7\7\r\2\2\u00b7\u00b8\b\7\1\2\u00b8\u00df\3\2\2\2\u00b9"+
-		"\u00ba\7\37\2\2\u00ba\u00bb\7\f\2\2\u00bb\u00bc\5\4\3\2\u00bc\u00bd\7"+
-		"\r\2\2\u00bd\u00be\b\7\1\2\u00be\u00df\3\2\2\2\u00bf\u00c0\7 \2\2\u00c0"+
-		"\u00c1\7\f\2\2\u00c1\u00c2\5\4\3\2\u00c2\u00c3\7\r\2\2\u00c3\u00c4\b\7"+
-		"\1\2\u00c4\u00df\3\2\2\2\u00c5\u00c6\7\22\2\2\u00c6\u00c7\7\f\2\2\u00c7"+
-		"\u00c8\5\4\3\2\u00c8\u00c9\7\r\2\2\u00c9\u00ca\b\7\1\2\u00ca\u00df\3\2"+
-		"\2\2\u00cb\u00cc\7\23\2\2\u00cc\u00cd\7\f\2\2\u00cd\u00ce\5\4\3\2\u00ce"+
-		"\u00cf\7\r\2\2\u00cf\u00d0\b\7\1\2\u00d0\u00df\3\2\2\2\u00d1\u00d2\7\13"+
-		"\2\2\u00d2\u00df\b\7\1\2\u00d3\u00d4\7\n\2\2\u00d4\u00df\b\7\1\2\u00d5"+
-		"\u00d6\7\16\2\2\u00d6\u00df\b\7\1\2\u00d7\u00d8\7\17\2\2\u00d8\u00df\b"+
-		"\7\1\2\u00d9\u00da\7\f\2\2\u00da\u00db\5\4\3\2\u00db\u00dc\7\r\2\2\u00dc"+
-		"\u00dd\b\7\1\2\u00dd\u00df\3\2\2\2\u00dee\3\2\2\2\u00dek\3\2\2\2\u00de"+
-		"q\3\2\2\2\u00dew\3\2\2\2\u00de}\3\2\2\2\u00de\u0083\3\2\2\2\u00de\u0089"+
-		"\3\2\2\2\u00de\u008f\3\2\2\2\u00de\u0095\3\2\2\2\u00de\u009b\3\2\2\2\u00de"+
-		"\u00a1\3\2\2\2\u00de\u00a7\3\2\2\2\u00de\u00ad\3\2\2\2\u00de\u00b3\3\2"+
-		"\2\2\u00de\u00b9\3\2\2\2\u00de\u00bf\3\2\2\2\u00de\u00c5\3\2\2\2\u00de"+
-		"\u00cb\3\2\2\2\u00de\u00d1\3\2\2\2\u00de\u00d3\3\2\2\2\u00de\u00d5\3\2"+
-		"\2\2\u00de\u00d7\3\2\2\2\u00de\u00d9\3\2\2\2\u00df\r\3\2\2\2\t%\'>@Qc"+
-		"\u00de";
+		"\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3"+
+		"\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7\u00e2\n"+
+		"\7\3\7\2\2\b\2\4\6\b\n\f\2\2\u0101\2\16\3\2\2\2\4\24\3\2\2\2\6-\3\2\2"+
+		"\2\bT\3\2\2\2\nf\3\2\2\2\f\u00e1\3\2\2\2\16\20\5\4\3\2\17\21\7%\2\2\20"+
+		"\17\3\2\2\2\20\21\3\2\2\2\21\22\3\2\2\2\22\23\b\2\1\2\23\3\3\2\2\2\24"+
+		"\25\5\6\4\2\25*\b\3\1\2\26\27\7\3\2\2\27\30\5\6\4\2\30\31\7\b\2\2\31\32"+
+		"\b\3\1\2\32)\3\2\2\2\33\34\7\3\2\2\34\35\5\6\4\2\35\36\b\3\1\2\36)\3\2"+
+		"\2\2\37 \7\4\2\2 !\5\6\4\2!\"\7\b\2\2\"#\b\3\1\2#)\3\2\2\2$%\7\4\2\2%"+
+		"&\5\6\4\2&\'\b\3\1\2\')\3\2\2\2(\26\3\2\2\2(\33\3\2\2\2(\37\3\2\2\2($"+
+		"\3\2\2\2),\3\2\2\2*(\3\2\2\2*+\3\2\2\2+\5\3\2\2\2,*\3\2\2\2-.\5\b\5\2"+
+		".C\b\4\1\2/\60\7\5\2\2\60\61\5\b\5\2\61\62\7\b\2\2\62\63\b\4\1\2\63B\3"+
+		"\2\2\2\64\65\7\5\2\2\65\66\5\b\5\2\66\67\b\4\1\2\67B\3\2\2\289\7\6\2\2"+
+		"9:\5\b\5\2:;\7\b\2\2;<\b\4\1\2<B\3\2\2\2=>\7\6\2\2>?\5\b\5\2?@\b\4\1\2"+
+		"@B\3\2\2\2A/\3\2\2\2A\64\3\2\2\2A8\3\2\2\2A=\3\2\2\2BE\3\2\2\2CA\3\2\2"+
+		"\2CD\3\2\2\2D\7\3\2\2\2EC\3\2\2\2FG\5\n\6\2GH\7\7\2\2HI\5\b\5\2IJ\7\b"+
+		"\2\2JK\b\5\1\2KU\3\2\2\2LM\5\n\6\2MN\7\7\2\2NO\5\b\5\2OP\b\5\1\2PU\3\2"+
+		"\2\2QR\5\n\6\2RS\b\5\1\2SU\3\2\2\2TF\3\2\2\2TL\3\2\2\2TQ\3\2\2\2U\t\3"+
+		"\2\2\2VW\5\f\7\2WX\7\b\2\2XY\b\6\1\2Yg\3\2\2\2Z[\5\f\7\2[\\\b\6\1\2\\"+
+		"g\3\2\2\2]^\7\t\2\2^_\5\f\7\2_`\7\b\2\2`a\b\6\1\2ag\3\2\2\2bc\7\t\2\2"+
+		"cd\5\f\7\2de\b\6\1\2eg\3\2\2\2fV\3\2\2\2fZ\3\2\2\2f]\3\2\2\2fb\3\2\2\2"+
+		"g\13\3\2\2\2hi\7\25\2\2ij\7\f\2\2jk\5\4\3\2kl\7\r\2\2lm\b\7\1\2m\u00e2"+
+		"\3\2\2\2no\7\26\2\2op\7\f\2\2pq\5\4\3\2qr\7\r\2\2rs\b\7\1\2s\u00e2\3\2"+
+		"\2\2tu\7\27\2\2uv\7\f\2\2vw\5\4\3\2wx\7\r\2\2xy\b\7\1\2y\u00e2\3\2\2\2"+
+		"z{\7\24\2\2{|\7\f\2\2|}\5\4\3\2}~\7\r\2\2~\177\b\7\1\2\177\u00e2\3\2\2"+
+		"\2\u0080\u0081\7\33\2\2\u0081\u0082\7\f\2\2\u0082\u0083\5\4\3\2\u0083"+
+		"\u0084\7\r\2\2\u0084\u0085\b\7\1\2\u0085\u00e2\3\2\2\2\u0086\u0087\7\34"+
+		"\2\2\u0087\u0088\7\f\2\2\u0088\u0089\5\4\3\2\u0089\u008a\7\r\2\2\u008a"+
+		"\u008b\b\7\1\2\u008b\u00e2\3\2\2\2\u008c\u008d\7\35\2\2\u008d\u008e\7"+
+		"\f\2\2\u008e\u008f\5\4\3\2\u008f\u0090\7\r\2\2\u0090\u0091\b\7\1\2\u0091"+
+		"\u00e2\3\2\2\2\u0092\u0093\7\30\2\2\u0093\u0094\7\f\2\2\u0094\u0095\5"+
+		"\4\3\2\u0095\u0096\7\r\2\2\u0096\u0097\b\7\1\2\u0097\u00e2\3\2\2\2\u0098"+
+		"\u0099\7\31\2\2\u0099\u009a\7\f\2\2\u009a\u009b\5\4\3\2\u009b\u009c\7"+
+		"\r\2\2\u009c\u009d\b\7\1\2\u009d\u00e2\3\2\2\2\u009e\u009f\7\32\2\2\u009f"+
+		"\u00a0\7\f\2\2\u00a0\u00a1\5\4\3\2\u00a1\u00a2\7\r\2\2\u00a2\u00a3\b\7"+
+		"\1\2\u00a3\u00e2\3\2\2\2\u00a4\u00a5\7!\2\2\u00a5\u00a6\7\f\2\2\u00a6"+
+		"\u00a7\5\4\3\2\u00a7\u00a8\7\r\2\2\u00a8\u00a9\b\7\1\2\u00a9\u00e2\3\2"+
+		"\2\2\u00aa\u00ab\7\"\2\2\u00ab\u00ac\7\f\2\2\u00ac\u00ad\5\4\3\2\u00ad"+
+		"\u00ae\7\r\2\2\u00ae\u00af\b\7\1\2\u00af\u00e2\3\2\2\2\u00b0\u00b1\7#"+
+		"\2\2\u00b1\u00b2\7\f\2\2\u00b2\u00b3\5\4\3\2\u00b3\u00b4\7\r\2\2\u00b4"+
+		"\u00b5\b\7\1\2\u00b5\u00e2\3\2\2\2\u00b6\u00b7\7\36\2\2\u00b7\u00b8\7"+
+		"\f\2\2\u00b8\u00b9\5\4\3\2\u00b9\u00ba\7\r\2\2\u00ba\u00bb\b\7\1\2\u00bb"+
+		"\u00e2\3\2\2\2\u00bc\u00bd\7\37\2\2\u00bd\u00be\7\f\2\2\u00be\u00bf\5"+
+		"\4\3\2\u00bf\u00c0\7\r\2\2\u00c0\u00c1\b\7\1\2\u00c1\u00e2\3\2\2\2\u00c2"+
+		"\u00c3\7 \2\2\u00c3\u00c4\7\f\2\2\u00c4\u00c5\5\4\3\2\u00c5\u00c6\7\r"+
+		"\2\2\u00c6\u00c7\b\7\1\2\u00c7\u00e2\3\2\2\2\u00c8\u00c9\7\22\2\2\u00c9"+
+		"\u00ca\7\f\2\2\u00ca\u00cb\5\4\3\2\u00cb\u00cc\7\r\2\2\u00cc\u00cd\b\7"+
+		"\1\2\u00cd\u00e2\3\2\2\2\u00ce\u00cf\7\23\2\2\u00cf\u00d0\7\f\2\2\u00d0"+
+		"\u00d1\5\4\3\2\u00d1\u00d2\7\r\2\2\u00d2\u00d3\b\7\1\2\u00d3\u00e2\3\2"+
+		"\2\2\u00d4\u00d5\7\13\2\2\u00d5\u00e2\b\7\1\2\u00d6\u00d7\7\n\2\2\u00d7"+
+		"\u00e2\b\7\1\2\u00d8\u00d9\7\16\2\2\u00d9\u00e2\b\7\1\2\u00da\u00db\7"+
+		"\17\2\2\u00db\u00e2\b\7\1\2\u00dc\u00dd\7\f\2\2\u00dd\u00de\5\4\3\2\u00de"+
+		"\u00df\7\r\2\2\u00df\u00e0\b\7\1\2\u00e0\u00e2\3\2\2\2\u00e1h\3\2\2\2"+
+		"\u00e1n\3\2\2\2\u00e1t\3\2\2\2\u00e1z\3\2\2\2\u00e1\u0080\3\2\2\2\u00e1"+
+		"\u0086\3\2\2\2\u00e1\u008c\3\2\2\2\u00e1\u0092\3\2\2\2\u00e1\u0098\3\2"+
+		"\2\2\u00e1\u009e\3\2\2\2\u00e1\u00a4\3\2\2\2\u00e1\u00aa\3\2\2\2\u00e1"+
+		"\u00b0\3\2\2\2\u00e1\u00b6\3\2\2\2\u00e1\u00bc\3\2\2\2\u00e1\u00c2\3\2"+
+		"\2\2\u00e1\u00c8\3\2\2\2\u00e1\u00ce\3\2\2\2\u00e1\u00d4\3\2\2\2\u00e1"+
+		"\u00d6\3\2\2\2\u00e1\u00d8\3\2\2\2\u00e1\u00da\3\2\2\2\u00e1\u00dc\3\2"+
+		"\2\2\u00e2\r\3\2\2\2\n\20(*ACTf\u00e1";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

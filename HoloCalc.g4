@@ -2,7 +2,7 @@ grammar HoloCalc;
 
 // Calcalates a string terminated by EOF
 calc returns [double result]
-    :   value = addsub {$result = $value.result;}
+    :   value = addsub EQUALS? {$result = $value.result;}
     ;
 
 // Addition and subtraction
